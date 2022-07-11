@@ -1,4 +1,4 @@
-from User import Client
+from yandex_music_api import Client
 from LoginUser import LoginUser
 from time import sleep
 

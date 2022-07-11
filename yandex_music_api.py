@@ -20,7 +20,7 @@ class Client():
 				file.writelines(str(i) + "\n")
 
 
-	def get_playlists(self, path=None, filename="playlists"):
+	def get_playlist(self, path=None, filename="playlists"):
 		url = f"https://music.yandex.ru/users/{self.login}/playlists"
 		html = self.__get_html(url)
 		names = html.find(".playlist__title-link")
@@ -77,7 +77,7 @@ class Client():
 		for index in range(len(names)):
 			data = {
 				"name": names[index].find('a')[0].text,
-				"artist": muted[index].full_text,
+				"genres": muted[index].full_text,
 			}
 			res.append(data)
 		if not path is None:
