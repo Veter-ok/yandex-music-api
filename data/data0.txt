@@ -1,2 +1,0 @@
-{'url': 'https://music.yandex.ru/users/lrd.msk/playlists/3', 'name': 'Мне нравится'}
-{'url': 'https://music.yandex.ru/users/lrd.msk/playlists/1000', 'name': 'American pop music'}

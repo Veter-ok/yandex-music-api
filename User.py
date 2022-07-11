@@ -14,13 +14,13 @@ class Client():
 		return html
 
 
-	def __save_data(self, data):
-		with open(f"data/data{self.index_file}.txt", 'w') as file:
+	def __save_data(self, data, path, name):
+		with open(f"{path}{name}.txt", 'w') as file:
 			for i in data:
 				file.writelines(str(i) + "\n")
 
 
-	def get_playlists(self, save=False):
+	def get_playlists(self, path=None, filename="playlists"):
 		url = f"https://music.yandex.ru/users/{self.login}/playlists"
 		html = self.__get_html(url)
 		names = html.find(".playlist__title-link")
@@ -32,12 +32,12 @@ class Client():
 				"name": name.text
 			}
 			res.append(data)
-		if save:
-			self.__save_data(res)
+		if not path is None:
+			self.__save_data(res, path, filename)
 		return res
 
 
-	def get_tracks_from_playlist(self, url, save=False):
+	def get_tracks_from_playlist(self, url, path=None, filename="playlists"):
 		html = self.__get_html(url)
 		names = html.find(".d-track__name")
 		artists = html.find(".d-track__artists")
@@ -48,12 +48,12 @@ class Client():
 				"artist": artists[index].text,
 			}
 			res.append(data)
-		if save:
-			self.__save_data(res)
+		if not path is None:
+			self.__save_data(res, path, filename)
 		return res
 
 
-	def get_tracks(self, save=False):
+	def get_tracks(self, path=None, filename="playlists"):
 		html = self.__get_html(f"https://music.yandex.ru/users/{self.login}/tracks")
 		names = html.find(".d-track__name")
 		artists = html.find(".d-track__artists")
@@ -64,12 +64,12 @@ class Client():
 				"artist": artists[index].full_text,
 			}
 			res.append(data)
-		if save:
-			self.__save_data(res)
+		if not path is None:
+			self.__save_data(res, path, filename)
 		return res
 		
 
-	def get_artists(self, save=False):
+	def get_artists(self, path=None, filename="playlists"):
 		html = self.__get_html(f"https://music.yandex.ru/users/{self.login}/artists")
 		names = html.find(".d-artists")
 		muted = html.find(".d-genres")
@@ -80,8 +80,8 @@ class Client():
 				"artist": muted[index].full_text,
 			}
 			res.append(data)
-		if save:
-			self.__save_data(res)
+		if not path is None:
+			self.__save_data(res, path, filename)
 		return res
 
 

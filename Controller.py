@@ -1,4 +1,3 @@
-from xml.dom.minidom import Element
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -11,7 +10,7 @@ class Controller():
 		options = Options()
 		if hide:
 			options.headless = True
-		self.driver = webdriver.Chrome('/Users/lrd/Desktop/github_projects/yandex-music-api/chromedriver-2', options=options)
+		self.driver = webdriver.Chrome('/Users/lrd/Desktop/github_projects/yandex-music-api/chromedriver', options=options)
 
 	def get_html(self):
 		return self.driver.page_source
