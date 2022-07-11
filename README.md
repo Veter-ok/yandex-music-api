@@ -10,7 +10,7 @@
 
 Для начала работы импортируем библиотеку и создаём экземпляр класс для получения данных. В качестве аргумента передаём имя пользователя:
 
-```
+```python
 from yandex_music_api import Client
 
 client = Client("имя пользователя")
@@ -18,7 +18,7 @@ client = Client("имя пользователя")
 
 Так для получения списка плейлистов необходмо воспользоваться методом *get_playlists()*
 
-```
+```python
 from yandex_music_api import Client
 
 client = Client("имя пользователя")
@@ -27,7 +27,7 @@ playlists = client.get_playlists()
 
 В примере выше в переменной *playlists,* будет хранится массив из объектов вида:
 
-```
+```python
 {
     name: "имя плейлиста",
     url: "ссылка на плейлист"
@@ -36,7 +36,7 @@ playlists = client.get_playlists()
 
 Для получение песен из плейлиста необходмо воспользоваться методом *get_tracks_from_playlist()* и в качестве аргумента передать ссылку на плейлист.
 
-```
+```python
 from yandex_music_api import Client
 
 client = Client("имя пользователя")
@@ -46,7 +46,7 @@ tracks = client.get_tracks_from_playlist(playlists[0]['url'])
 
 В примере выше в переменной *tracks*, будет хранится массив из объектов вида:
 
-```
+```python
 {
     name: "название песни",
     artist: "имя исполнителя"
@@ -55,7 +55,7 @@ tracks = client.get_tracks_from_playlist(playlists[0]['url'])
 
 Для получения треков, которые были отмечены как "нравится" используем метод *get_tracks()*
 
-```
+```python
 from yandex_music_api import Client
 
 client = Client("имя пользователя")
@@ -66,7 +66,7 @@ tracks = client.get_tracks()
 
 Для получения данных о любимых исполнителях, необходимо использовать метод *get_artists()*
 
-```
+```python
 from yandex_music_api import Client
 
 client = Client("имя пользователя")
@@ -75,7 +75,7 @@ playlists = client.get_artists()
 
 Метод вернёт массив из объектов вида:
 
-```
+```python
 {
     name: "имя исполнителя",
     genres: "жанр исполнителя"
@@ -90,7 +90,7 @@ path - путь по которому сохранять файл (по умол
 
 filename - имя файла для сохранения
 
-```
+```python
 from yandex_music_api import Client
 
 client = Client("имя пользователя")
