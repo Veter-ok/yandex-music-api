@@ -16,7 +16,7 @@ from yandex_music_api import Client
 client = Client("имя пользователя")
 ```
 
-Так для получения списка плейлистов необходмо воспользоваться методом *get_playlists()*
+Так для получения списка плейлистов необходимо воспользоваться методом *get_playlists()*
 
 ```python
 from yandex_music_api import Client
@@ -34,7 +34,7 @@ playlists = client.get_playlists()
 }
 ```
 
-Для получение песен из плейлиста необходмо воспользоваться методом *get_tracks_from_playlist()* и в качестве аргумента передать ссылку на плейлист.
+Для получение песен из плейлиста необходимо воспользоваться методом *get_tracks_from_playlist()* и в качестве аргумента передать ссылку на плейлист.
 
 ```python
 from yandex_music_api import Client
