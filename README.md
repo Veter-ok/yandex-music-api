@@ -70,7 +70,7 @@ tracks = client.get_tracks()
 from yandex_music_api import Client
 
 client = Client("имя пользователя")
-playlists = client.get_artists()
+artists = client.get_artists()
 ```
 
 Метод вернёт массив из объектов вида:

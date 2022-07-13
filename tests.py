@@ -1,3 +1,4 @@
+# elizabeth.fedotova@gmail.com
 from yandex_music_api import Client
 from LoginUser import LoginUser
 from time import sleep
