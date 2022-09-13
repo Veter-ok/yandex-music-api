@@ -1,26 +1,26 @@
 from requests_html import HTMLSession
 
 class Client():
-	def __init__(self, login):
+	def __init__(self, login: str):
 		self.login = login
 		self.index_file = 0
 		self.session = HTMLSession()
 
 
-	def __get_html(self, url):
+	def __get_html(self, url: str) -> any:
 		response = self.session.get(url)
 		response.html.render(timeout=20)
 		html = response.html
 		return html
 
 
-	def __save_data(self, data, path, name):
+	def __save_data(self, data, path:str, name:str):
 		with open(f"{path}{name}.txt", 'w') as file:
 			for i in data:
 				file.writelines(str(i) + "\n")
 
 
-	def get_playlists(self, path=None, filename="playlists"):
+	def get_playlists(self, path=None, filename="playlists") -> list:
 		url = f"https://music.yandex.ru/users/{self.login}/playlists"
 		html = self.__get_html(url)
 		names = html.find(".playlist__title-link")
@@ -37,7 +37,7 @@ class Client():
 		return res
 
 
-	def get_tracks_from_playlist(self, url, path=None, filename="playlists"):
+	def get_tracks_from_playlist(self, url:str, path=None, filename="playlists") -> list:
 		html = self.__get_html(url)
 		names = html.find(".d-track__name")
 		artists = html.find(".d-track__artists")
@@ -53,7 +53,7 @@ class Client():
 		return res
 
 
-	def get_tracks(self, path=None, filename="playlists"):
+	def get_tracks(self, path=None, filename="playlists") -> list:
 		html = self.__get_html(f"https://music.yandex.ru/users/{self.login}/tracks")
 		names = html.find(".d-track__name")
 		artists = html.find(".d-track__artists")
@@ -69,7 +69,7 @@ class Client():
 		return res
 		
 
-	def get_artists(self, path=None, filename="playlists"):
+	def get_artists(self, path=None, filename="playlists") -> list:
 		html = self.__get_html(f"https://music.yandex.ru/users/{self.login}/artists")
 		names = html.find(".d-artists")
 		muted = html.find(".d-genres")
